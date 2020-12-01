@@ -20,6 +20,10 @@ def create_app(app_config: Config):
     def howdy():
         return "howdy"
 
+    @app.route("/health", methods=["GET"])
+    def health():
+        return jsonify({"status": "ok"})
+
     return app
 
 
