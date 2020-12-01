@@ -16,6 +16,9 @@ def create_app(app_config: Config):
     init_db(app)
     db = app.db
 
+    class BucketWish(db.Model):
+        id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
     @app.route('/howdy', methods=['GET'])
     def howdy():
         return "howdy"
@@ -29,6 +32,17 @@ def create_app(app_config: Config):
         answer = f"goodbye Mr {name}"
         return jsonify({"response": answer})
 
+    @app.route("/bucket_list", methods=["GET", "POST"])
+    def bucket_list():
+        if request.method == "POST":
+            pass
+            # write logic, probably using the data from request.get_json()
+            # Note you'll need to send data with the correct headers (Content-Type: application/json)
+            # and the data in the body
+        else:
+            pass
+            # write GET logic
+
     return app
 
 
@@ -37,5 +51,5 @@ def create_app(app_config: Config):
 if __name__ == "__main__":
     dev_config = Config()
 
-    app = create_app(dev_config)
-    app.run(port=5050, host='127.0.0.1')
+    flask_app = create_app(dev_config)
+    flask_app.run(port=5050, host='127.0.0.1')

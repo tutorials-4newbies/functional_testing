@@ -46,3 +46,14 @@ def test_parameterized_endpoint(client):
     res = client.get("/goodbye/trump")
     json_data = res.get_json()
     assert json_data == {"response": "goodbye Mr trump"}
+
+
+def test_posting_a_bucket_wish_returns_201(client):
+    res = client.post("/bucket_list", json={"wish": "see the sea for one last time"},
+                      headers={"Content-Type": "application/json"})
+    assert res.status_code == 201
+    json_data = res.get_json()
+    assert json_data == {"wish": "see the sea for one last time"}
+    # conceptually we also need to check this was also saved, so now add an request for the same endpoint
+    # returning the bucket list but with GET, expected return:
+    # [{id:1, wish:"the wish"}]
