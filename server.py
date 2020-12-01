@@ -24,6 +24,11 @@ def create_app(app_config: Config):
     def health():
         return jsonify({"status": "ok"})
 
+    @app.route("/goodbye/<name>")
+    def goodbye(name: str):
+        answer = f"goodbye Mr {name}"
+        return jsonify({"response": answer})
+
     return app
 
 
