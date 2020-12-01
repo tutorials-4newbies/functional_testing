@@ -34,3 +34,9 @@ def client():
 def test_howdy(client):
     res = client.get('/howdy')
     assert 'howdy' in str(res.data)
+
+
+def test_health_endpoint(client):
+    res = client.get('/health')
+    json_data = res.get_json()
+    assert json_data == {"status": "ok"}
