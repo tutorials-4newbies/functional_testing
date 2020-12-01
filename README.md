@@ -28,3 +28,9 @@ pip install -r requirements.txt
 1. get all items
 2. Implement save new item
 3. implement server side query of item by price
+
+## Learn about flask
+
+[The docs](https://flask.palletsprojects.com/en/1.1.x/)
+
+[A good flask series](https://pythonise.com/series/learning-flask)
