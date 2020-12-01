@@ -40,3 +40,8 @@ def test_health_endpoint(client):
     res = client.get('/health')
     json_data = res.get_json()
     assert json_data == {"status": "ok"}
+
+def test_parameterized_endpoint(client):
+    res = client.get("/goodbye/trump")
+    json_data = res.get_json()
+    assert json_data == {"response":"goodbye Mr trump"}
